@@ -1,8 +1,14 @@
+import 'package:expense_tracker/home/controller/home_controller.dart';
 import 'package:expense_tracker/home/view/home_view.dart';
+import 'package:expense_tracker/new_transaction/controller/new_transaction_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => HomeController()),
+    ChangeNotifierProvider(create: (context) => NewTransactionController()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
